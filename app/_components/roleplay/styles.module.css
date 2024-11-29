@@ -1,0 +1,42 @@
+/* styles.module.css */
+
+/* Apply styles to the container */
+.customScrollbar {
+  height: 100%;
+  overflow-y: auto;
+  scroll-behavior: smooth; /* Smooth scrolling */
+}
+
+/* Webkit-based browsers */
+.customScrollbar::-webkit-scrollbar {
+  height: 2px !important; /* Width of the scrollbar */
+}
+
+.customScrollbar::-webkit-scrollbar-thumb {
+  background: linear-gradient(90deg, #f9b6b8, #f7ded7); /* Gradient line */
+  border-radius: 10px; /* Smooth, rounded edges */
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth hover animation */
+}
+
+.customScrollbar::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(90deg, #f5cbe9, #d7e3f9); /* Light gradient on hover */
+  transform: scaleY(1.5); /* Slight expansion on hover */
+}
+
+.customScrollbar::-webkit-scrollbar-track {
+  background: transparent; /* Transparent background */
+}
+
+/* Subtle animation when scrolling */
+.customScrollbar::-webkit-scrollbar-thumb {
+  animation: linePulse 2s infinite;
+}
+
+@keyframes linePulse {
+  0%, 100% {
+      opacity: 1;
+  }
+  50% {
+      opacity: 0.8; /* Gentle fade for a pulsating effect */
+  }
+}

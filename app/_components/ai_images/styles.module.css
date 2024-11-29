@@ -1,0 +1,8 @@
+.gradientBackground {
+    background: linear-gradient(90deg, #202024 0%, rgba(19, 19, 22, 0) 100%),
+        linear-gradient(0deg, #202024, #202024);
+}
+
+.selectedOptionBg {
+    background: linear-gradient(90deg, #2C2C30 0%, #202024 100%);
+}

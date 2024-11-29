@@ -1,0 +1,17 @@
+/* styles.module.css */
+
+.customBackground {
+  background: linear-gradient(95.99deg, #202024 -0.24%, rgba(32, 29, 33, 0) 100%);
+}
+
+.customShadow {
+  box-shadow: 0px 28px 22.1px -32px rgba(0, 0, 0, 0.25);
+}
+
+.lineClamp {
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
