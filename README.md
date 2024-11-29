@@ -1,9 +1,3 @@
-# Anime Haven
-
-A cozy online haven for anime enthusiasts to explore, share, and celebrate their favorite shows and stories. Built with **Next.js 14** and **Tailwind CSS**.
-
----
-
 ## Features
 
 - 🚀 **Blazing Fast**: Powered by Next.js 14 with optimized performance.
