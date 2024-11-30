@@ -52,19 +52,19 @@ const ContentPreferenceModal: React.FC = () => {
       <div className="fixed inset-0 bg-slate-600 bg-opacity-50" />
 
       {/* Modal */}
-      <div className="relative z-10 bg-background p-6 rounded-lg shadow-md">
+      <div className="relative flex flex-col items-center justify-center z-10 bg-background p-6 rounded-lg shadow-md">
         <h2 className="text-lg text-white font-bold text-center mb-4">
           What content are you interested in?
         </h2>
-        <div className="grid grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {options.map((option) => (
             <div
               key={option.value}
-              className="group relative flex flex-col items-center justify-end w-48 h-48 rounded-lg cursor-pointer overflow-hidden"
+              className="group relative flex flex-col items-center justify-center md:justify-end w-48 h-48 rounded-lg cursor-pointer overflow-hidden"
               onClick={() => handleSelection(option.value)}
             >
               {/* Background Image */}
-              <div className="absolute inset-0">
+              <div className="absolute inset-0 w-full">
                 <Image
                   src={option.imageSrc}
                   alt={option.label}
