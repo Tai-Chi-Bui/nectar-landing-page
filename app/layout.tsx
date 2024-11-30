@@ -1,8 +1,7 @@
+import React, { Suspense } from "react";
 import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
-import Sidebar from "./_components/sidebar";
-import Navbar from "./_components/navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -20,6 +19,10 @@ export const metadata: Metadata = {
   description: "Built by Tai Bui",
 };
 
+// Lazy-load components to use with Suspense
+const LazySidebar = React.lazy(() => import("./_components/sidebar"));
+const LazyNavbar = React.lazy(() => import("./_components/navbar"));
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -32,10 +35,14 @@ export default function RootLayout({
       >
         <div className="flex w-[100vw]">
           {/* Sidebar Sticky */}
-          <Sidebar className="sticky top-0 h-screen z-20" />
+          <Suspense fallback={<div className="h-screen w-16 bg-gray-200">Loading Sidebar...</div>}>
+            <LazySidebar className="sticky top-0 h-screen z-20" />
+          </Suspense>
           <main className="w-[calc(100vw-64px)] flex-1 pl-[183px] pr-[209px] pb-96 relative">
             {/* Navbar Sticky */}
-            <Navbar className="sticky top-0 left-0 w-full z-30 bg-background" />
+            <Suspense fallback={<div className="w-full h-12 bg-gray-200">Loading Navbar...</div>}>
+              <LazyNavbar className="sticky top-0 left-0 w-full z-30 bg-background" />
+            </Suspense>
             {children}
           </main>
         </div>

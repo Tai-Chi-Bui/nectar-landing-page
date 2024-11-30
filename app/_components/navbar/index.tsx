@@ -1,5 +1,5 @@
 'use client';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
 interface SidebarProps {
@@ -10,15 +10,15 @@ const Navbar: React.FC<SidebarProps> = ({ className }) => {
   const router = useRouter();
   const searchParams = useSearchParams();
 
-  // Tabs with title and key
-  const tabs = [
+  // Tabs with title and key (useMemo to prevent recreation)
+  const tabs = useMemo(() => [
     { title: 'Girls', key: 'girls' },
     { title: 'Anime', key: 'anime' },
     { title: 'Guys', key: 'guys' },
-  ];
+  ], []);
 
   const defaultTab = tabs[0]; // Default to the first tab
-  const [activeTab, setActiveTab] = useState(
+  const [activeTab, setActiveTab] = useState(() => 
     tabs.find((tab) => tab.key === searchParams.get('tab')) || defaultTab
   );
 
@@ -32,10 +32,10 @@ const Navbar: React.FC<SidebarProps> = ({ className }) => {
       params.set('tab', defaultTab.key);
       router.replace(`?${params.toString()}`);
       setActiveTab(defaultTab);
-    } else {
+    } else if (matchedTab !== activeTab) {
       setActiveTab(matchedTab);
     }
-  }, [searchParams, router]);
+  }, [searchParams, router, tabs, defaultTab, activeTab]);
 
   const handleTabClick = (tab: { title: string; key: string }) => {
     setActiveTab(tab);
