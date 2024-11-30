@@ -36,9 +36,9 @@ export default function RootLayout({
         <div className="flex w-[100vw]">
           {/* Sidebar Sticky */}
           <Suspense fallback={<div className="h-screen w-16 bg-gray-200">Loading Sidebar...</div>}>
-            <LazySidebar className="sticky top-0 h-screen z-20" />
+            <LazySidebar className="hidden md:block sticky top-0 h-screen z-20" />
           </Suspense>
-          <main className="w-[calc(100vw-64px)] flex-1 pl-[183px] pr-[209px] pb-96 relative">
+          <main className="w-[calc(100vw-64px)] flex-1 p-1 md:pl-[183px] md:pr-[209px] pb-96 relative">
             {/* Navbar Sticky */}
             <Suspense fallback={<div className="w-full h-12 bg-gray-200">Loading Navbar...</div>}>
               <LazyNavbar className="sticky top-0 left-0 w-full z-30 bg-background" />
